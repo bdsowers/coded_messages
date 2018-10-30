@@ -1,0 +1,48 @@
+<h1>Basic Site Info</h1>
+<%= form_for @siteinfo do |f| %>
+	Class Title: 
+	<%= f.text_field :title, placeholder: "Title", class: "form-control" %><br/>
+
+	Message to Show When Entering a Code:
+	<%= f.text_field :enter_code_message, placeholder: "Enter Code message", class: "form-control" %><br/>
+
+	Message to Show When a Code Doesn't Exist:
+	<%= f.text_field :invalid_code_message, placeholder: "Invalid Code message", class: "form-control" %><br/>
+
+	Message to Show When a Code is Valid:
+	<%= f.text_field :successful_code_message, placeholder: "Successful Code message", class: "form-control" %><br/>
+	<%= f.submit "Update Site Info", class: "btn btn-primary" %>
+<% end %>
+<br/>
+
+<h1>Create a New Message</h1>
+<%= form_tag create_message_path do %>
+	<%= text_field_tag :code, nil, placeholder: "Code", class: "form-control" %><br/>
+	<%= text_field_tag :message, nil, placeholder: "Message", class: "form-control" %><br/>
+	<%= text_field_tag :description, nil, placeholder: "Description", class: "form-control" %><br/>
+	<%= submit_tag "Create New", class: "btn btn-primary" %>
+<% end %>
+<br/>
+
+<h1>Current Messages</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Code</th>
+			<th>Message</th>
+			<th>Description</th>
+			<th colspan="1"></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @messages.each do |message| %>
+			<tr>
+				<td><%= message.code %></td>
+				<td><%= message.message %></td>
+				<td><%= message.description %></td>
+				<td><%= link_to "Delete", delete_message_path(id: message.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

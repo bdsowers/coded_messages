@@ -1,0 +1,6 @@
+<% if @siteinfo && !@siteinfo.successful_code_message.blank?%>
+	<h1><%= @siteinfo.successful_code_message %></h1>
+	<br/>
+<% end %>
+
+<h1><%= @message.message %></h1>

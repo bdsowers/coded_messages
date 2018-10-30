@@ -1,0 +1,22 @@
+<%= form_tag message_path do %>
+	<% if @siteinfo %>
+		<h1><%= @siteinfo.enter_code_message %></h1>
+	<% else %>
+		<h1>Enter a Code!</h1>
+	<% end %>
+
+	<%= text_field_tag :code, nil, class: "form-control" %><br/>
+	<%= submit_tag "OK!", class: "btn btn-primary" %>
+<% end %>
+
+<% if flash[:error] != nil %>
+	<br />
+
+	<p style="color:red;">
+	<% if @siteinfo %>
+		<%= @siteinfo.invalid_code_message %>
+	<% else %>
+		<%= flash[:error] %>
+	<% end %>
+	</p>
+<% end %>
