@@ -27,9 +27,9 @@
             <span class="icon-bar"></span>
           </button>
           <% if @siteinfo %>
-          <li><%= link_to @siteinfo.title, root_path, class: "navbar-brand" %></li>
+          <%= link_to @siteinfo.title, root_path, class: "navbar-brand" %>
           <% else %>
-          <li><%= link_to "Home", root_path, class: "navbar-brand" %></li>
+          <%= link_to "Home", root_path, class: "navbar-brand" %>
           <% end %>
         </div>
 
