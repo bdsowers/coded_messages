@@ -29,8 +29,9 @@ class HubController < ApplicationController
   end
 
   def get_site_info
-    @siteinfo = SiteInfo.first
-    if @siteinfo == nil
+    if SiteInfo.all.length > 0
+      @siteinfo = SiteInfo.first
+    else
       @siteinfo = SiteInfo.create(title: "Hello Class!",
                                   enter_code_message: "Enter a Code",
                                   invalid_code_message: "That code doesn't work.",
